@@ -34,17 +34,10 @@ unset($__defined_vars, $__key, $__value); ?>
 ?>
 
 <div class="mb-6">
-    
-    <div class="flex items-center justify-between mb-3">
         <h2 class="font-bold text-lg">
             <?php echo e($habit->name); ?>
 
         </h2>
-        <span class="text-sm text-gray-600 font-semibold">
-            <?php echo e($selectedYear); ?>
-
-        </span>
-    </div>
 
     
     <div class="bg-orange-50 p-2 habit-shadow-lg">

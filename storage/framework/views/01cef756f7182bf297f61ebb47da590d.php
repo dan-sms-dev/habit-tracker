@@ -31,6 +31,16 @@
 <?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
 <?php endif; ?>
 
+        <div class="my-4">
+            <?php $__currentLoopData = $availableYears; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $year): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <a href="<?php echo e(route('habits.history', ['year' => $year])); ?>"
+                    class="habit-btn habit-shadow-lg p-2 inline-block <?php echo e($selectedYear == $year ? 'bg-habit-blue' : 'bg-white'); ?>">
+                    <?php echo e($year); ?>
+
+                </a>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+
         <?php $__empty_1 = true; $__currentLoopData = $habits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $habit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
             <?php if (isset($component)) { $__componentOriginal8049dc57821327c0fd2af1a1c82e4411 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8049dc57821327c0fd2af1a1c82e4411 = $attributes; } ?>

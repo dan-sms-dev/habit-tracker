@@ -121,16 +121,23 @@ class HabitController extends Controller
             ->with('success', $message);
     }
 
-    public function history()
+    public function history(int $year = null): View
     {
-        $selectedYear = request('year', Carbon::now()->year);
+        $selectedYear = $year ?? Carbon::now()->year;
+        $availableYears = range(2024, Carbon::now()->year);
+
+        if (!in_array($selectedYear, $availableYears)) {
+            abort(404, 'Ano inválido.');
+        }
+
         $startDate = Carbon::createFromDate($selectedYear, month: 1, day: 1)->startOfDay();
+
         $endDate = Carbon::createFromDate($selectedYear, month: 12, day: 31)->endOfDay();
 
         $habits = Auth::user()->habits()->with(['habitLogs' => function ($query) use ($startDate, $endDate) {
             $query->whereBetween('completed_at', [$startDate, $endDate]);
         }])->get();
 
-        return view('habits.history', compact('habits', 'selectedYear'));
+        return view('habits.history', compact('habits', 'selectedYear', 'availableYears'));
     }
 }
