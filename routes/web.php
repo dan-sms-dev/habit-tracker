@@ -8,7 +8,7 @@ use App\Http\Controllers\HabitController;
 
 Route::get('/', [SiteController::class, 'index'])-> name('site.index');
 
-Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('auth.login');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('site.register');

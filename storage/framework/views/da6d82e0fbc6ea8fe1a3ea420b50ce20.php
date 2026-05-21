@@ -51,7 +51,7 @@
                         Cadastrar-se
                     </a>
 
-                    <a href="<?php echo e(route('site.login')); ?>" class="p-2 habit-btn habit-shadow-lg bg-habit-blue">
+                    <a href="<?php echo e(route('login')); ?>" class="p-2 habit-btn habit-shadow-lg bg-habit-blue">
                         Logar
                     </a>
                 </div>

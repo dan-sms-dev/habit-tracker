@@ -16,19 +16,16 @@ class Habit extends Model
         'user_id'
     ];
 
-    // um hábito pertence a um usuário
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    // um hábito pode ter muitos logs
     public function habitLogs(): HasMany
     {
         return $this->hasMany(HabitLog::class);
     }
 
-    // um hábito pode ter muitos registros
     public function habitLogEntries(): HasMany
     {
         return $this->hasMany(HabitLog::class);
@@ -39,5 +36,36 @@ class Habit extends Model
         return $this->habitLogs()
             ->whereDate('completed_at', Carbon::today()->toDateString())
             ->exists();
+    }
+
+    public function wasCompletedOnDate(Carbon $date): bool
+    {
+        return $this->habitLogs()
+            ->whereDate('completed_at', $date->toDateString())
+            ->exists();
+    }
+
+    public static function generateYearGrid(int $year): array
+    {
+        $startDate = \Carbon\Carbon::create($year, 1, 1);
+        $endDate = \Carbon\Carbon::create($year, 12, 31);
+
+        $weeks = [];
+        $currentWeek = [];
+
+        $firstDayOfWeek = $startDate->dayOfWeek;
+        for ($i = 0; $i < $firstDayOfWeek; $i++) {
+            $currentWeek[] = null;
+        }
+
+        for ($date = $startDate->copy(); $date->lte($endDate); $date->addDay()) {
+            $currentWeek[] = $date->copy();
+
+            if ($date->isSaturday() || $date->eq($endDate)) {
+                $weeks[] = $currentWeek;
+                $currentWeek = [];
+            }
+        }
+        return $weeks;
     }
 }

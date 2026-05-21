@@ -29,32 +29,8 @@ foreach ($attributes->all() as $__key => $__value) {
 unset($__defined_vars, $__key, $__value); ?>
 
 <?php
-    // Define o ano (padrão: ano atual)
-    $selectedYear = $year ?? now()->year;
-
-    // Primeiro e último dia do ano
-    $startDate = \Carbon\Carbon::create($selectedYear, 1, 1); // 01/01/YYYY
-    $endDate = \Carbon\Carbon::create($selectedYear, 12, 31); // 31/12/YYYY
-
-    $weeks = [];
-    $currentWeek = [];
-
-    // Preenche dias vazios no início (se o ano não começar no domingo)
-    $firstDayOfWeek = $startDate->dayOfWeek; // 0 = domingo, 1 = segunda, etc
-    for ($i = 0; $i < $firstDayOfWeek; $i++) {
-        $currentWeek[] = null; // Placeholder vazio
-    }
-
-    // Agrupa os dias em semanas (domingo a sábado)
-    for ($date = $startDate->copy(); $date->lte($endDate); $date->addDay()) {
-        $currentWeek[] = $date->copy();
-
-        // Fecha a semana no sábado ou no último dia
-        if ($date->isSaturday() || $date->eq($endDate)) {
-            $weeks[] = $currentWeek;
-            $currentWeek = [];
-        }
-    }
+  $selectedYear = $year ?? now()-> year;
+  $weeks = App\Models\Habit::generateYearGrid($selectedYear)
 ?>
 
 <div class="mb-6">
@@ -80,14 +56,8 @@ unset($__defined_vars, $__key, $__value); ?>
                             
                             <div class="w-3 h-3"></div>
                         <?php else: ?>
-                            <?php
-                                // TODO: Verificar se tem log nessa data
-                                $hasDone = $habit->habitLogs
-                                    ->where('completed_at', $day->format('Y-m-d'))
-                                    ->isNotEmpty();
-                            ?>
                             <div class="w-3 h-3 rounded-xs cursor-pointer transition hover:ring-2 hover:ring-blue-400
-                       <?php echo e($hasDone ? 'bg-[#61A6AB]' : 'bg-[#DADFE9]'); ?>"
+                       <?php echo e($habit->wasCompletedOnDate($day) ? 'bg-[#61A6AB]' : 'bg-[#DADFE9]'); ?>"
                                 title="<?php echo e($day->format('d/m/Y')); ?> - <?php echo e($day->translatedFormat('l')); ?>"></div>
                         <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -32,7 +32,7 @@
                         Cadastrar-se
                     </a>
 
-                    <a href="{{ route('site.login') }}" class="p-2 habit-btn habit-shadow-lg bg-habit-blue">
+                    <a href="{{ route('login') }}" class="p-2 habit-btn habit-shadow-lg bg-habit-blue">
                         Logar
                     </a>
                 </div>
