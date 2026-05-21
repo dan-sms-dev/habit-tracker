@@ -1,15 +1,15 @@
 <x-layout>
-    <main class="max-w-5xl mx-auto py-10 min-h-[calc(100vh-160px)] px-4">
+    <main class="max-w-5xl mx-auto py-10 px-4 min-h-[80vh] w-full">
 
         {{-- NAVBAR --}}
         <x-navbar />
 
-        <div>
-            <h2 class="text-lg mt-8 mb-2">
-                {{ date('d/m/Y') }}
-            </h2>
+        <div class="flex flex-col gap-4 items-start">
+            <x-title>
+                {{ Carbon\Carbon::now()->locale('pt_BR')->translatedFormat('l, d \de F \de Y') }}
+            </x-title>
 
-            <ul class="flex flex-col gap-2">
+            <ul class="flex flex-col gap-2 w-full">
                 @forelse ($habits as $item)
                     <li class="habit-shadow-lg p-2 bg-[#FFDAAC]">
                         <form action="{{ route('habits.toggle', $item->id) }}" method="POST"
@@ -33,6 +33,11 @@
                     </a>
                 @endforelse
             </ul>
-            </div>
+
+            <a href="{{ route('habits.create') }}" class="p-2 habit-btn habit-shadow-lg bg-habit-blue">
+                + Adicionar hábito
+            </a>
+
+        </div>
     </main>
 </x-layout>

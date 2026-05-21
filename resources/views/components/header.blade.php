@@ -11,12 +11,6 @@
         </div>
         {{-- github --}}
         <div class="flex items-center gap-4">
-            {{-- GitHub --}}
-            <a href="https://github.com/dan-sms-dev" target="_blank" rel="noopener noreferrer"
-                class="flex gap-1 px-2 py-1 habit-btn habit-shadow-lg">
-                <x-icons.git />
-            </a>
-
             @auth
                 <form action="{{ route('auth.logout') }}" method="POST">
                     @csrf
@@ -37,6 +31,12 @@
                     </a>
                 </div>
             @endguest
+
+            {{-- GitHub --}}
+            <a href="https://github.com/dan-sms-dev" target="_blank" rel="noopener noreferrer"
+                class="flex gap-1 px-2 py-1 habit-btn habit-shadow-lg">
+                <x-icons.git />
+            </a>
         </div>
     </div>
 </header>

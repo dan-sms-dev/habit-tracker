@@ -69,7 +69,7 @@ class HabitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Habit $habit)
+    public function destroy(Habit $habit) 
     {
         $this->authorize('delete', $habit);
 

@@ -40,7 +40,7 @@ unset($__defined_vars, $__key, $__value); ?>
         </h2>
 
     
-    <div class="bg-orange-50 p-2 habit-shadow-lg">
+    <div class="bg-orange-50 p-2 habit-shadow-lg mt-2">
         <div class="flex gap-1 justify-between w-full">
             <?php $__currentLoopData = $weeks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $week): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="flex flex-col gap-1">

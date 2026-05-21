@@ -8,7 +8,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <main class="py-10 min-h-[calc(100vh-160px)] px-4">
+    <main class="max-w-5xl mx-auto py-10 px-4 min-h-[80vh] w-full">
 
         <?php if (isset($component)) { $__componentOriginala591787d01fe92c5706972626cdf7231 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginala591787d01fe92c5706972626cdf7231 = $attributes; } ?>
@@ -31,36 +31,39 @@
 <?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
 <?php endif; ?>
 
-        <?php $__sessionArgs = ['success'];
-if (session()->has($__sessionArgs[0])) :
-if (isset($value)) { $__sessionPrevious[] = $value; }
-$value = session()->get($__sessionArgs[0]); ?>
-        <div class="flex justify-center">
-            <p class="bg-green-100 border border-green-400 text-green-700 p-3 mb-4 block">
-                <?php echo e(session('success')); ?>
-
-            </p>
-        </div>
-        <?php unset($value);
-if (isset($__sessionPrevious) && !empty($__sessionPrevious)) { $value = array_pop($__sessionPrevious); }
-if (isset($__sessionPrevious) && empty($__sessionPrevious)) { unset($__sessionPrevious); }
-endif;
-unset($__sessionArgs); ?>
-
-        <div>
-            <h2 class="text-lg mt-8 mb-2">
-                Configurações dos seus hábitos:
-            </h2>
-
-            <ul class="flex flex-col gap-2">
+            <?php if (isset($component)) { $__componentOriginala29c4b6de1220dbc50317dc759b47929 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginala29c4b6de1220dbc50317dc759b47929 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.title','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('title'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+                Configurar meus hábitos
+             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginala29c4b6de1220dbc50317dc759b47929)): ?>
+<?php $attributes = $__attributesOriginala29c4b6de1220dbc50317dc759b47929; ?>
+<?php unset($__attributesOriginala29c4b6de1220dbc50317dc759b47929); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginala29c4b6de1220dbc50317dc759b47929)): ?>
+<?php $component = $__componentOriginala29c4b6de1220dbc50317dc759b47929; ?>
+<?php unset($__componentOriginala29c4b6de1220dbc50317dc759b47929); ?>
+<?php endif; ?>
+            <ul class="flex flex-col gap-2 mt-2">
                 <?php $__empty_1 = true; $__currentLoopData = $habits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                <li class="habit-shadow-lg p-2 bg-[#FFDAAC]">
-                    <div class="flex gap-2 items-center">
-                        <p class="font-bold text-lg ">
-                            <?php echo e($item->name); ?>
+                    <li class="flex gap-2 items-center justify-between w-full">
+                        <div class="habit-shadow-lg p-2 bg-[#FFDAAC] w-full">
+                            <p class="font-bold text-lg ">
+                                <?php echo e($item->name); ?>
 
-                        </p>
-                        <a class="bg-white border text-black p-1 hover:opacity-60 cursor-pointer" href="<?php echo e(route('habits.edit', $item->id)); ?>">
+                            </p>
+                        </div>
+                        
+                        <a class="bg-white habit-shadow-lg p-2 border text-black hover:opacity-60 cursor-pointer"
+                            href="<?php echo e(route('habits.edit', $item->id)); ?>">
                             <?php if (isset($component)) { $__componentOriginal32022bdceaa704d305484041fc21cb4a = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal32022bdceaa704d305484041fc21cb4a = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.icons.edit','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -82,10 +85,12 @@ unset($__sessionArgs); ?>
 <?php unset($__componentOriginal32022bdceaa704d305484041fc21cb4a); ?>
 <?php endif; ?>
                         </a>
+                        
                         <form action="<?php echo e(route('habits.destroy', $item)); ?>" method="POST">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('DELETE'); ?>
-                            <button type="submit" class="bg-red-500 border text-white p-1 hover:opacity-60 cursor-pointer">
+                            <button type="submit"
+                                class="bg-red-500 habit-shadow-lg border text-white p-2 hover:opacity-60 cursor-pointer">
                                 <?php if (isset($component)) { $__componentOriginal54951bafeaab9df77e16fbbcb64bac40 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal54951bafeaab9df77e16fbbcb64bac40 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.icons.trash','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -108,19 +113,17 @@ unset($__sessionArgs); ?>
 <?php endif; ?>
                             </button>
                         </form>
-                    </div>
-                </li>
+                    </li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                <p class="text-center">
-                    Ainda não há hábitos cadastrados.
-                </p>
-                <a href="<?php echo e(route('habits.create')); ?>"
-                    class="bg-blue-500 text-white text-center px-3 py-1 rounded-md ">
-                    Cadastre um novo hábito
-                </a>
+                    <p class="text-center">
+                        Ainda não há hábitos cadastrados.
+                    </p>
+                    <a href="<?php echo e(route('habits.create')); ?>"
+                        class="bg-blue-500 text-white text-center px-3 py-1 rounded-md ">
+                        Cadastre um novo hábito
+                    </a>
                 <?php endif; ?>
             </ul>
-        </div>
     </main>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

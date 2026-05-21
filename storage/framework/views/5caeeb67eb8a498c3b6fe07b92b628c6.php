@@ -16,7 +16,7 @@
     <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
 </head>
 
-<body class="bg-[#FFEDD6] font-mono relative">
+<body class="front-mono relative habit-bg min-h-screen flex flex-col justify-between">
     
     <?php if (isset($component)) { $__componentOriginalfd1f218809a441e923395fcbf03e4272 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalfd1f218809a441e923395fcbf03e4272 = $attributes; } ?>

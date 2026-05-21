@@ -8,7 +8,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <main class="max-w-5xl mx-auto py-10 min-h-[calc(100vh-160px)] px-4">
+    <main class="max-w-5xl mx-auto py-10 px-4 min-h-[80vh] w-full">
 
         
         <?php if (isset($component)) { $__componentOriginala591787d01fe92c5706972626cdf7231 = $component; } ?>
@@ -32,13 +32,31 @@
 <?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
 <?php endif; ?>
 
-        <div>
-            <h2 class="text-lg mt-8 mb-2">
-                <?php echo e(date('d/m/Y')); ?>
+        <div class="flex flex-col gap-4 items-start">
+            <?php if (isset($component)) { $__componentOriginala29c4b6de1220dbc50317dc759b47929 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginala29c4b6de1220dbc50317dc759b47929 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.title','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('title'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+                <?php echo e(Carbon\Carbon::now()->locale('pt_BR')->translatedFormat('l, d \de F \de Y')); ?>
 
-            </h2>
+             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginala29c4b6de1220dbc50317dc759b47929)): ?>
+<?php $attributes = $__attributesOriginala29c4b6de1220dbc50317dc759b47929; ?>
+<?php unset($__attributesOriginala29c4b6de1220dbc50317dc759b47929); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginala29c4b6de1220dbc50317dc759b47929)): ?>
+<?php $component = $__componentOriginala29c4b6de1220dbc50317dc759b47929; ?>
+<?php unset($__componentOriginala29c4b6de1220dbc50317dc759b47929); ?>
+<?php endif; ?>
 
-            <ul class="flex flex-col gap-2">
+            <ul class="flex flex-col gap-2 w-full">
                 <?php $__empty_1 = true; $__currentLoopData = $habits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <li class="habit-shadow-lg p-2 bg-[#FFDAAC]">
                         <form action="<?php echo e(route('habits.toggle', $item->id)); ?>" method="POST"
@@ -64,7 +82,12 @@
                     </a>
                 <?php endif; ?>
             </ul>
-            </div>
+
+            <a href="<?php echo e(route('habits.create')); ?>" class="p-2 habit-btn habit-shadow-lg bg-habit-blue">
+                + Adicionar hábito
+            </a>
+
+        </div>
     </main>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

@@ -8,7 +8,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <main class="max-w-5xl mx-auto py-10 min-h-[calc(100vh-160px)] px-4">
+    <main class="max-w-5xl mx-auto py-10 px-4 min-h-[80vh] w-full">
 
         <?php if (isset($component)) { $__componentOriginala591787d01fe92c5706972626cdf7231 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginala591787d01fe92c5706972626cdf7231 = $attributes; } ?>
@@ -29,6 +29,28 @@
 <?php if (isset($__componentOriginala591787d01fe92c5706972626cdf7231)): ?>
 <?php $component = $__componentOriginala591787d01fe92c5706972626cdf7231; ?>
 <?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
+<?php endif; ?>
+
+        <?php if (isset($component)) { $__componentOriginala29c4b6de1220dbc50317dc759b47929 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginala29c4b6de1220dbc50317dc759b47929 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.title','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('title'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+            Histórico de hábitos
+         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginala29c4b6de1220dbc50317dc759b47929)): ?>
+<?php $attributes = $__attributesOriginala29c4b6de1220dbc50317dc759b47929; ?>
+<?php unset($__attributesOriginala29c4b6de1220dbc50317dc759b47929); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginala29c4b6de1220dbc50317dc759b47929)): ?>
+<?php $component = $__componentOriginala29c4b6de1220dbc50317dc759b47929; ?>
+<?php unset($__componentOriginala29c4b6de1220dbc50317dc759b47929); ?>
 <?php endif; ?>
 
         <div class="my-4">
