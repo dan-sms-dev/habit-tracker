@@ -77,7 +77,7 @@ class HabitController extends Controller
 
         return redirect()
             ->route('habits.index')
-            ->with('success', 'Hábito deletado com sucesso!');
+            ->with('warning', 'Hábito deletado com sucesso!');
     }
 
     public function settings()
@@ -104,6 +104,7 @@ class HabitController extends Controller
         if ($log) {
             // 4.
             $log->delete();
+            $alert = 'warning';
             $message = 'Hábito desmarcado.';
         } else {
             // 5.
@@ -112,13 +113,14 @@ class HabitController extends Controller
                 'habit_id' => $habit->id,
                 'completed_at' => $today,
             ]);
+            $alert = 'success';
             $message = 'Hábito concluído com sucesso 👏';
         }
 
         // 6.
         return redirect()
             ->route('habits.index')
-            ->with('success', $message);
+            ->with($alert, $message);
     }
 
     public function history(int $year = null): View

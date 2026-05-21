@@ -16,7 +16,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-[#FFEDD6] font-mono">
+<body class="bg-[#FFEDD6] font-mono relative">
     {{-- header --}}
     <x-header />
 
@@ -24,4 +24,9 @@
 
     {{-- footer --}}
     <x-footer />
+
+    {{-- toast --}}
+    <x-toast />
 </body>
+
+</html>
