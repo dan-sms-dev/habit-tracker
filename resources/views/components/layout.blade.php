@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name') }}</title>
 
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsUlEQVR4AexUMQ6AMAis/tHFzZe5ufhIhcSQSK4VhtaQYHqxwmGO0zKXn68UoB246ItYQDS4LLXMkWItQBKjNlDAdpwFwSoK1XIM1UMBiNgrlgLSgbAO8DBBcB+WWA7wMLHAY0MsBzydWbmxHNjXpVhg7Z55sRxgxQ8muiNQ2LfCOuBrs8FOB9IB6EBt2DT+pVfKUw8FvN7W+UELQMMFxWqyEBfFpF4LkMSoTXcBX43cAAAA//9I694ZAAAABklEQVQDAM2sXEH18prvAAAAAElFTkSuQmCC" type="image/png">
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsUlEQVR4AexUMQ6AMAis/tHFzZe5ufhIhcSQSK4VhtaQYHqxwmGO0zKXn68UoB246ItYQDS4LLXMkWItQBKjNlDAdpwFwSoK1XIM1UMBiNgrlgLSgbAO8DBBcB+WWA7wMLHAY0MsBzydWbmxHNjXpVhg7Z55sRxgxQ8muiNQ2LfCOuBrs8FOB9IB6EBt2DT+pVfKUw8FvN7W+UELQMMFxWqyEBfFpF4LkMSoTXcBX43cAAAA//9I694ZAAAABklEQVQDAM2sXEH18prvAAAAAElFTkSuQmCC">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
