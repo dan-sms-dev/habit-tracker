@@ -32,7 +32,7 @@ RUN npm install && npm run build
 RUN php artisan config:cache
 
 # Porta
-EXPOSE 10000
+EXPOSE 8080
 
 # Start
-CMD php artisan serve --host=0.0.0.0 --port=10000
+CMD php artisan serve --host=0.0.0.0 --port=8080
