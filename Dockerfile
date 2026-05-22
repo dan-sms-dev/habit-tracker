@@ -31,6 +31,13 @@ RUN npm install && npm run build
 # Gera cache
 RUN php artisan config:cache
 
+# Create .env file if it doesn't exist
+RUN cp .env.example .env || true
+
+# Create necessary directories and set permissions
+RUN mkdir -p storage/logs bootstrap/cache && \
+    chmod -R 777 storage bootstrap/cache
+
 # Porta
 EXPOSE 8080
 
