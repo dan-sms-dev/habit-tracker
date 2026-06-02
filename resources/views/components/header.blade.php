@@ -1,11 +1,11 @@
-<header class="bg-white border-b-2">
-    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+<header class="bg-white/90 border-b border-habit-border backdrop-blur">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 p-4">
         {{-- logo --}}
         <div class="flex items-center gap-2">
-            <a href="{{ route('habits.index') }}" class="habit-btn habit-shadow-lg px-2 py-1 bg-habit-blue">
+            <a href="{{ route('habits.index') }}" class="habit-btn habit-primary h-9 w-9 text-sm tracking-wide">
                 HT
             </a>
-            <p>
+            <p class="font-semibold text-slate-900">
                 Habit Tracker
             </p>
         </div>
@@ -14,7 +14,7 @@
             @auth
                 <form action="{{ route('auth.logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="habit-btn habit-shadow-lg  p-2 border-2">
+                    <button type="submit" class="habit-btn habit-secondary px-4 py-2">
                         Sair
                     </button>
                 </form>
@@ -22,11 +22,11 @@
 
             @guest
                 <div class="flex gap-2">
-                    <a href="{{ route('site.register') }}" class="p-2 habit-btn habit-shadow-lg">
+                    <a href="{{ route('site.register') }}" class="habit-btn habit-secondary px-4 py-2">
                         Cadastrar-se
                     </a>
 
-                    <a href="{{ route('login') }}" class="p-2 habit-btn habit-shadow-lg bg-habit-blue">
+                    <a href="{{ route('login') }}" class="habit-btn habit-primary px-4 py-2">
                         Logar
                     </a>
                 </div>
@@ -34,7 +34,7 @@
 
             {{-- GitHub --}}
             <a href="https://github.com/dan-sms-dev" target="_blank" rel="noopener noreferrer"
-                class="flex gap-1 px-2 py-1 habit-btn habit-shadow-lg">
+                class="habit-btn habit-secondary h-9 w-9">
                 <x-icons.git />
             </a>
         </div>

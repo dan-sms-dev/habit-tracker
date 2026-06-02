@@ -1,15 +1,15 @@
 <x-layout>
     <main class="max-w-5xl mx-auto py-10 px-4 min-h-[80vh] w-full">
-      <h1 class="font-bold text-3xl text-center">
-        cadastrar novo hábito
+      <h1 class="font-semibold text-3xl text-center tracking-tight text-slate-950">
+        Cadastrar novo hábito
       </h1>
       <form action="{{ route('habits.store') }}" method="POST">
         @csrf
 
-        <section class="habit-shadow-lg bg-white max-w-[600px] mx-auto p-8 pb-8  mt-4">
-        <div class="flex flex-col gap-2 mb-2">
+        <section class="habit-panel max-w-[600px] mx-auto p-8 mt-6">
+        <div class="flex flex-col gap-2 mb-4">
 
-          <label for="name" class="text-xl">
+          <label for="name" class="font-medium text-slate-700">
             Nome do hábito
           </label>
 
@@ -17,16 +17,16 @@
             type="text"
             name="name"
             placeholder="Ex: ler 10 páginas de um livro..."
-            class="bg-white habit-btn habit-shadow-lg text-bold p-2">
+            class="habit-input">
 
         </div>
         @error('name')
-          <p class="text-red-500 text-sm font-bold text-center">
+          <p class="text-red-600 text-sm font-semibold text-center mb-3">
             {{ $message }}
           </p>
         @enderror
 
-        <button type="submit" class="bg-habit-blue habit-btn habit-shadow-lg text-bold p-2 w-full">
+        <button type="submit" class="habit-btn habit-primary p-3 w-full">
           Cadastrar hábito
         </button>
         </section>

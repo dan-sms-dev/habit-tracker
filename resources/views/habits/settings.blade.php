@@ -6,17 +6,18 @@
             <x-title>
                 Configurar meus hábitos
             </x-title>
-            <ul class="flex flex-col gap-2 mt-2">
+            <ul class="flex flex-col gap-3 mt-4">
                 @forelse ($habits as $item)
                     <li class="flex gap-2 items-center justify-between w-full">
-                        <div class="habit-shadow-lg p-2 bg-[#FFDAAC] w-full">
-                            <p class="font-bold text-lg ">
+                        <div class="habit-card p-4 w-full">
+                            <p class="font-semibold text-lg text-slate-900">
                                 {{ $item->name }}
                             </p>
                         </div>
                         {{-- EDIT --}}
-                        <a class="bg-white habit-shadow-lg p-2 border text-black hover:opacity-60 cursor-pointer"
-                            href="{{ route('habits.edit', $item->id) }}">
+                        <a class="habit-btn habit-secondary p-3 hover:opacity-80"
+                            href="{{ route('habits.edit', $item->id) }}"
+                            aria-label="Editar hábito">
                             <x-icons.edit />
                         </a>
                         {{-- DELETE --}}
@@ -24,19 +25,22 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit"
-                                class="bg-red-500 habit-shadow-lg border text-white p-2 hover:opacity-60 cursor-pointer">
+                                class="habit-btn habit-danger p-3 hover:opacity-90"
+                                aria-label="Excluir hábito">
                                 <x-icons.trash />
                             </button>
                         </form>
                     </li>
                 @empty
-                    <p class="text-center">
-                        Ainda não há hábitos cadastrados.
-                    </p>
-                    <a href="{{ route('habits.create') }}"
-                        class="bg-blue-500 text-white text-center px-3 py-1 rounded-md ">
-                        Cadastre um novo hábito
-                    </a>
+                    <div class="habit-card p-6 text-center text-slate-600">
+                        <p>
+                            Ainda não há hábitos cadastrados.
+                        </p>
+                        <a href="{{ route('habits.create') }}"
+                            class="habit-btn habit-primary px-4 py-2 mt-4">
+                            Cadastrar novo hábito
+                        </a>
+                    </div>
                 @endforelse
             </ul>
     </main>

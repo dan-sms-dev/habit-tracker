@@ -9,34 +9,139 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --font-mono: 'IBM Plex Mono', monospace;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-    --color-habit-blue: #61a6ab;
+    --color-habit-blue: #2f6f73;
+    --color-habit-blue-soft: #dbeaec;
+    --color-habit-surface: #ffffff;
+    --color-habit-muted: #64748b;
+    --color-habit-border: #d8e0e7;
 }
 
 .habit-bg {
-  background-size: 70px 70px;
-  background-image: linear-gradient(90deg, #80808033 1px, #0000 0), linear-gradient(#80808033 1px, #0000 0);
-  background-color: #FFEDD6;
+  background:
+    radial-gradient(circle at top left, rgba(47, 111, 115, 0.08), transparent 30rem),
+    linear-gradient(180deg, #f6f8f9 0%, #eef3f4 100%);
 }
 
 .habit-btn {
-  font-weight: 700;
+  align-items: center;
+  border-radius: 0.5rem;
   cursor: pointer;
+  display: inline-flex;
+  font-weight: 600;
+  gap: 0.5rem;
+  justify-content: center;
+  line-height: 1.25;
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease;
+}
+
+.habit-primary {
+  background-color: #2f6f73;
+  border: 1px solid #2f6f73;
+  color: #ffffff;
+}
+
+.habit-primary:hover {
+  background-color: #265b5f;
+  border-color: #265b5f;
+}
+
+.habit-secondary {
+  background-color: #ffffff;
+  border: 1px solid #d8e0e7;
+  color: #20313a;
+}
+
+.habit-secondary:hover {
+  background-color: #f7fafb;
+  border-color: #b9c8d2;
+}
+
+.habit-danger {
+  background-color: #b42318;
+  border: 1px solid #b42318;
+  color: #ffffff;
+}
+
+.habit-danger:hover {
+  background-color: #912018;
+  border-color: #912018;
+}
+
+.habit-card {
+  background-color: #ffffff;
+  border: 1px solid #d8e0e7;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.habit-input {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  color: #17252c;
+  padding: 0.625rem 0.75rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.habit-input:focus {
+  border-color: #2f6f73;
+  box-shadow: 0 0 0 3px rgba(47, 111, 115, 0.14);
+  outline: none;
+}
+
+.habit-nav-link {
+  border-radius: 999px;
+  color: #475569;
+  font-weight: 600;
+  padding: 0.45rem 0.8rem;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.habit-nav-link:hover,
+.habit-nav-link-active {
+  background-color: #dbeaec;
+  color: #1f5256;
+}
+
+.habit-panel {
+  background-color: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(216, 224, 231, 0.9);
+  border-radius: 1rem;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.habit-check {
+  accent-color: #2f6f73;
 }
 
 .habit-shadow {
-    border: 3px solid #000;
-    box-shadow: 2px 2px 0px #000;
+    border: 1px solid #d8e0e7;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .habit-shadow-lg {
-    border: 3px solid #000;
-    box-shadow: 3px 3px 0px #000;
+    border: 1px solid #d8e0e7;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
     transition: .2s ease;
 }
 
 .habit-shadow-lg:hover {
-    box-shadow: 1px 2px 0px #000;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.09);
 }
 
+.habit-toast {
+    border: 1px solid currentColor;
+    border-radius: 0.75rem;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.14);
+}
+
+.habit-footer-link {
+    color: #1f5256;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}

@@ -2,15 +2,15 @@
     $type = session()->has('success') ? 'success' : (session()->has('error') ? 'error' : 'warning');
     $message = session()->get($type);
     $styles = [
-        'success' => 'bg-green-100 border-green-400 text-green-700',
-        'error' => 'bg-red-100 border-red-400 text-red-700',
-        'warning' => 'bg-yellow-100 border-yellow-400 text-yellow-700',
+        'success' => 'bg-emerald-50 text-emerald-700',
+        'error' => 'bg-red-50 text-red-700',
+        'warning' => 'bg-amber-50 text-amber-700',
     ];
 ?>
 
 <?php if(session()->has('success') || session()->has('error') || session()->has('warning')): ?>
     <div
-        class="absolute top-30 right-65 border-2 p-3 mb-4 flex gap-2 items-center <?php echo e($styles[$type]); ?>">
+        class="fixed top-6 right-6 z-50 habit-toast p-4 mb-4 flex gap-2 items-center max-w-sm <?php echo e($styles[$type]); ?>">
 
         <?php if (isset($component)) { $__componentOriginal511d4862ff04963c3c16115c05a86a9d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal511d4862ff04963c3c16115c05a86a9d = $attributes; } ?>
@@ -41,7 +41,7 @@
 
     <script>
         setTimeout(() => {
-            const toast = document.querySelector('.absolute');
+            const toast = document.querySelector('.habit-toast');
             if (toast) {
                 toast.remove();
             }

@@ -7,10 +7,10 @@
             Histórico de hábitos
         </x-title>
 
-        <div class="my-4">
+        <div class="my-4 flex flex-wrap gap-2">
             @foreach ($availableYears as $year)
                 <a href="{{ route('habits.history', ['year' => $year]) }}"
-                    class="habit-btn habit-shadow-lg p-2 inline-block {{ $selectedYear == $year ? 'bg-habit-blue' : 'bg-white' }}">
+                    class="habit-btn px-4 py-2 {{ $selectedYear == $year ? 'habit-primary' : 'habit-secondary' }}">
                     {{ $year }}
                 </a>
             @endforeach
@@ -19,11 +19,11 @@
         @forelse($habits as $habit)
             <x-contribution :$habit :year="$selectedYear" />
         @empty
-            <div>
-                <p class="text-black">
+            <div class="habit-card p-6 text-slate-600">
+                <p>
                     Nenhum hábito para exibir histórico.
                 </p>
-                <a href="{{ route('habits.create') }}" class="underline ">
+                <a href="{{ route('habits.create') }}" class="habit-footer-link">
                     Crie um novo hábito
                 </a>
             </div>
